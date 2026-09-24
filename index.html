@@ -9,26 +9,23 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="wordmark" href="/" aria-label="Lee Sieun Archive home">LEE SIEUN / ARCHIVE</a>
-      <div class="controls" aria-label="Archive controls">
+      <a class="wordmark" href="/" aria-label="Lee Sieun Archive home"><span>LEE SIEUN</span> / ARCHIVE</a>
+      <div class="explore-options" aria-label="Archive controls">
         <nav class="filter-nav" aria-label="View filter">
           <span class="control-label">View</span>
           <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
           <button class="filter-button" type="button" data-filter="channel" aria-pressed="false">Channels</button>
           <button class="filter-button" type="button" data-filter="block" aria-pressed="false">Blocks</button>
         </nav>
-        <label class="sort-control">
+        <nav class="sort-nav" aria-label="Sort archive">
           <span class="control-label">Sort</span>
-          <select id="sort-select" aria-label="Sort archive">
-            <option value="recent">Recently added</option>
-            <option value="random">Random</option>
-          </select>
-        </label>
+          <button class="sort-button is-active" type="button" data-sort="recent" aria-pressed="true">Recently updated</button>
+          <button class="sort-button" type="button" data-sort="random" aria-pressed="false">Random</button>
+        </nav>
       </div>
     </header>
 
     <main>
-      <p class="archive-count" id="archive-count" aria-live="polite"></p>
       <section class="archive-grid" id="archive-grid" aria-label="Archive items"></section>
     </main>
 

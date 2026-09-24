@@ -1,91 +1,41 @@
 const grid = document.querySelector("#archive-grid");
-const count = document.querySelector("#archive-count");
 const filterButtons = [...document.querySelectorAll(".filter-button")];
-const sortSelect = document.querySelector("#sort-select");
-
+const sortButtons = [...document.querySelectorAll(".sort-button")];
 let activeFilter = "all";
 let activeSort = "recent";
 
-function formatDate(value) {
-  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${value}T00:00:00`));
-}
+function shuffle(items) { return [...items].sort(() => Math.random() - 0.5); }
 
-function shuffle(items) {
-  return [...items].sort(() => Math.random() - 0.5);
-}
-
-function createCard(item) {
+function createBlock(item) {
   const article = document.createElement("article");
-  article.className = `card card--${item.type}`;
-
-  if (item.type === "channel") {
-    article.innerHTML = `
-      <div class="channel-mark channel-mark--${item.accent}"></div>
-      <p class="card-kind">Channel</p>
-      <h2>${item.title}</h2>
-      <p class="channel-description">${item.description}</p>
-      <p class="card-meta">${item.count} blocks · ${formatDate(item.date)}</p>`;
-  }
-
-  if (item.type === "image") {
-    article.innerHTML = `
-      <img src="${item.image}" alt="${item.alt}" />
-      <div class="card-footer"><h2>${item.title}</h2><time datetime="${item.date}">${formatDate(item.date)}</time></div>`;
-  }
-
-  if (item.type === "text") {
-    article.innerHTML = `
-      <p class="card-kind">Text</p>
-      <blockquote>${item.text}</blockquote>
-      <p class="card-meta">${item.source} · ${formatDate(item.date)}</p>`;
-  }
-
-  if (item.type === "link") {
-    const link = document.createElement("a");
-    link.href = item.url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.className = "link-card-content";
-    link.innerHTML = `<span class="link-arrow" aria-hidden="true">↗</span><p class="card-kind">Link</p><h2>${item.title}</h2><p class="link-domain">${item.domain}</p><time datetime="${item.date}">${formatDate(item.date)}</time>`;
-    article.append(link);
-  }
+  article.className = "archive-item";
+  article.innerHTML = `<div class="placeholder placeholder--${item.ratio}" aria-label="Empty image block"></div><p class="block-caption">${item.title}</p>`;
   return article;
 }
 
 function render() {
-  let visible = activeFilter === "all"
-    ? [...archiveBlocks]
-    : archiveBlocks.filter((item) => activeFilter === "channel" ? item.type === "channel" : item.type !== "channel");
-
-  visible = activeSort === "random"
-    ? shuffle(visible)
-    : visible.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  grid.replaceChildren();
-  count.textContent = `${visible.length} ${visible.length === 1 ? "item" : "items"}`;
-
-  if (!visible.length) {
-    grid.append(document.querySelector("#empty-state-template").content.cloneNode(true));
-    return;
-  }
-  visible.forEach((item) => grid.append(createCard(item)));
+  let items = activeFilter === "channel" ? [] : [...archiveBlocks];
+  if (activeSort === "random") items = shuffle(items);
+  grid.replaceChildren(...items.map(createBlock));
+  if (!items.length) grid.innerHTML = '<p class="empty-state">No channels yet.</p>';
 }
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    filterButtons.forEach((item) => {
-      const selected = item === button;
-      item.classList.toggle("is-active", selected);
-      item.setAttribute("aria-pressed", selected);
-    });
-    render();
+function activate(buttons, selected) {
+  buttons.forEach((button) => {
+    const isSelected = button === selected;
+    button.classList.toggle("is-active", isSelected);
+    button.setAttribute("aria-pressed", isSelected);
   });
-});
+}
 
-sortSelect.addEventListener("change", (event) => {
-  activeSort = event.target.value;
+filterButtons.forEach((button) => button.addEventListener("click", () => {
+  activeFilter = button.dataset.filter;
+  activate(filterButtons, button);
   render();
-});
-
+}));
+sortButtons.forEach((button) => button.addEventListener("click", () => {
+  activeSort = button.dataset.sort;
+  activate(sortButtons, button);
+  render();
+}));
 render();

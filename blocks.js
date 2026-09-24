@@ -1,84 +1,15 @@
-// Add a new object here to publish a new item in the archive.
+// Add a new object here to add a blank archive block and its caption.
 const archiveBlocks = [
-  {
-    id: "channel-notes-from-september",
-    type: "channel",
-    title: "notes from september",
-    description: "small observations, things found on the way home, and a little weather.",
-    count: 18,
-    date: "2026-09-25",
-    accent: "yellow"
-  },
-  {
-    id: "image-blue-window",
-    type: "image",
-    title: "window, 5:42 pm",
-    image: "assets/images/blue-window.svg",
-    alt: "Abstract blue window and curtain composition",
-    date: "2026-09-24"
-  },
-  {
-    id: "text-september-note",
-    type: "text",
-    text: "A day can be held together by very small things: the sound of a receipt, cold water, a familiar song from the next room.",
-    source: "personal note",
-    date: "2026-09-23"
-  },
-  {
-    id: "link-are-na",
-    type: "link",
-    title: "A collection is a way of thinking",
-    url: "https://www.are.na/",
-    domain: "are.na",
-    date: "2026-09-22"
-  },
-  {
-    id: "channel-ways-of-seeing",
-    type: "channel",
-    title: "ways of seeing a room",
-    description: "corners, shelves, accidental still lifes.",
-    count: 7,
-    date: "2026-09-20",
-    accent: "blue"
-  },
-  {
-    id: "image-red-flowers",
-    type: "image",
-    title: "flowers outside the market",
-    image: "assets/images/red-flowers.svg",
-    alt: "Abstract red flowers in a glass vase",
-    date: "2026-09-18"
-  },
-  {
-    id: "text-listening",
-    type: "text",
-    text: "Listening is also a kind of collecting.",
-    source: "margin note",
-    date: "2026-09-17"
-  },
-  {
-    id: "link-radio-garden",
-    type: "link",
-    title: "Radio Garden — live radio from around the world",
-    url: "https://radio.garden/",
-    domain: "radio.garden",
-    date: "2026-09-15"
-  },
-  {
-    id: "image-sun-on-table",
-    type: "image",
-    title: "sun on the table",
-    image: "assets/images/sun-table.svg",
-    alt: "Abstract still life of sunlight on a table",
-    date: "2026-09-12"
-  },
-  {
-    id: "channel-things-to-keep",
-    type: "channel",
-    title: "things to keep",
-    description: "images and fragments for later.",
-    count: 31,
-    date: "2026-09-10",
-    accent: "pink"
-  }
+  { id: "block-01", title: "untitled image 01", ratio: "square", date: "2026-09-25" },
+  { id: "block-02", title: "untitled image 02", ratio: "portrait", date: "2026-09-24" },
+  { id: "block-03", title: "untitled image 03", ratio: "landscape", date: "2026-09-23" },
+  { id: "block-04", title: "untitled image 04", ratio: "square", date: "2026-09-22" },
+  { id: "block-05", title: "untitled image 05", ratio: "wide", date: "2026-09-21" },
+  { id: "block-06", title: "untitled image 06", ratio: "portrait", date: "2026-09-20" },
+  { id: "block-07", title: "untitled image 07", ratio: "landscape", date: "2026-09-19" },
+  { id: "block-08", title: "untitled image 08", ratio: "square", date: "2026-09-18" },
+  { id: "block-09", title: "untitled image 09", ratio: "portrait", date: "2026-09-17" },
+  { id: "block-10", title: "untitled image 10", ratio: "wide", date: "2026-09-16" },
+  { id: "block-11", title: "untitled image 11", ratio: "square", date: "2026-09-15" },
+  { id: "block-12", title: "untitled image 12", ratio: "landscape", date: "2026-09-14" }
 ];
