@@ -1,6 +1,6 @@
 // Add a new object here to add a blank archive block and its caption.
 const archiveBlocks = [
-  { id: "block-01", title: "untitled image 01", ratio: "square", date: "2026-09-25" },
+  { id: "block-01", title: "2026.04.24", ratio: "portrait", image: "assets/images/2026-04-24.png", date: "2026-04-24" },
   { id: "block-02", title: "untitled image 02", ratio: "portrait", date: "2026-09-24" },
   { id: "block-03", title: "untitled image 03", ratio: "landscape", date: "2026-09-23" },
   { id: "block-04", title: "untitled image 04", ratio: "square", date: "2026-09-22" },

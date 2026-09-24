@@ -9,7 +9,10 @@ function shuffle(items) { return [...items].sort(() => Math.random() - 0.5); }
 function createBlock(item) {
   const article = document.createElement("article");
   article.className = "archive-item";
-  article.innerHTML = `<div class="placeholder placeholder--${item.ratio}" aria-label="Empty image block"></div><p class="block-caption">${item.title}</p>`;
+  const content = item.image
+    ? `<img src="${item.image}" alt="${item.title}" />`
+    : "";
+  article.innerHTML = `<div class="placeholder placeholder--${item.ratio}" aria-label="${item.image ? item.title : "Empty image block"}">${content}</div><p class="block-caption">${item.title}</p>`;
   return article;
 }
 
